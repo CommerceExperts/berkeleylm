@@ -3,12 +3,11 @@ package edu.berkeley.nlp.lm.phrasetable;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Assert;
-
-import org.junit.Test;
-
 import edu.berkeley.nlp.lm.WordIndexer;
 import edu.berkeley.nlp.lm.phrasetable.MosesPhraseTable.TargetSideTranslation;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MosesPhraseTableTest
 {
@@ -19,22 +18,22 @@ public class MosesPhraseTableTest
 		{
 			final int[] array1 = WordIndexer.StaticMethods.toArrayFromStrings(readFromFile.getWordIndexer(), Arrays.asList("i", "like"));
 			final List<TargetSideTranslation> translations = readFromFile.getTranslations(array1, 0, array1.length);
-			Assert.assertEquals(3, translations.size());
-			Assert.assertEquals(1, translations.get(2).trgWords.length);
-			Assert.assertEquals(2, translations.get(0).trgWords.length);
+			assertEquals(3, translations.size());
+			assertEquals(1, translations.get(2).trgWords.length);
+			assertEquals(2, translations.get(0).trgWords.length);
 		}
 
 		{
-			final int[] array1 = WordIndexer.StaticMethods.toArrayFromStrings(readFromFile.getWordIndexer(), Arrays.asList("i"));
+			final int[] array1 = WordIndexer.StaticMethods.toArrayFromStrings(readFromFile.getWordIndexer(), List.of("i"));
 			final List<TargetSideTranslation> translations = readFromFile.getTranslations(array1, 0, array1.length);
-			Assert.assertEquals(1, translations.size());
-			Assert.assertEquals(1, translations.get(0).trgWords.length);
+			assertEquals(1, translations.size());
+			assertEquals(1, translations.get(0).trgWords.length);
 		}
 
 		{
-			final int[] array1 = WordIndexer.StaticMethods.toArrayFromStrings(readFromFile.getWordIndexer(), Arrays.asList("want"));
+			final int[] array1 = WordIndexer.StaticMethods.toArrayFromStrings(readFromFile.getWordIndexer(), List.of("want"));
 			final List<TargetSideTranslation> translations = readFromFile.getTranslations(array1, 0, array1.length);
-			Assert.assertEquals(0, translations.size());
+			assertEquals(0, translations.size());
 		}
 	}
 

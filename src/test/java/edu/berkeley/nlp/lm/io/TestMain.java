@@ -1,7 +1,5 @@
 package edu.berkeley.nlp.lm.io;
 
-import org.junit.Test;
-
 import edu.berkeley.nlp.lm.ConfigOptions;
 import edu.berkeley.nlp.lm.StringWordIndexer;
 
@@ -16,5 +14,4 @@ public class TestMain
 		final StringWordIndexer wordIndexer = new StringWordIndexer();
 		LmReaders.readLmFromGoogleNgramDir(googleDir, false, true, wordIndexer, new ConfigOptions());
 	}
-
 }

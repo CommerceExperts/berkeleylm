@@ -3,13 +3,13 @@ package edu.berkeley.nlp.lm.io;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import edu.berkeley.nlp.lm.ArrayEncodedProbBackoffLm;
 import edu.berkeley.nlp.lm.ConfigOptions;
 import edu.berkeley.nlp.lm.ContextEncodedProbBackoffLm;
 import edu.berkeley.nlp.lm.StringWordIndexer;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class BinaryTest
 {
@@ -23,7 +23,7 @@ public class BinaryTest
 		try {
 			tmpFile = File.createTempFile("berkeleylmtest", "binary");
 		} catch (final IOException e) {
-			Assert.fail(e.toString());
+			fail(e.toString());
 
 		}
 		if (tmpFile != null) {
@@ -34,7 +34,7 @@ public class BinaryTest
 			PerplexityTest.testContextEncodedLogProb(readLm, FileUtils.getFile(PerplexityTest.TEST_PERPLEX_TXT), PerplexityTest.TEST_PERPLEX_GOLD_PROB);
 			tmpFile.delete();
 		} else {
-			Assert.fail();
+			fail();
 		}
 	}
 
@@ -49,7 +49,7 @@ public class BinaryTest
 			try {
 				tmpFile = File.createTempFile("berkeleylmtest", "binary");
 			} catch (final IOException e) {
-				Assert.fail(e.toString());
+				fail(e.toString());
 
 			}
 			if (tmpFile != null) {
@@ -60,7 +60,7 @@ public class BinaryTest
 				PerplexityTest.testArrayEncodedLogProb(readLm, FileUtils.getFile(PerplexityTest.TEST_PERPLEX_TXT), PerplexityTest.TEST_PERPLEX_GOLD_PROB);
 				tmpFile.delete();
 			} else {
-				Assert.fail();
+				fail();
 			}
 		}
 	}
